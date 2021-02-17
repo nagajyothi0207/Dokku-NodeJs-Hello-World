@@ -1,6 +1,11 @@
 # Dokku-NodeJs-Sample-App
 ### Deployment of a Node.js project on AWS EC2 instance
 ##### This is just a static website hosting using NodeJs with express framework - images are hyperlinked.
+
+### Update the Ec2 instance - Run the below commands as a root user 
+```
+apt-get update -y
+```
 ### Bootstrap the node first
 ### for debian systems, installs dokku via apt-get
 ```
@@ -43,7 +48,7 @@ dokku apps:create nodejs-sample-app
  ```
  ``
 =====> Application deployed:
-To dokku:nodejs-sample-app-v1
+To dokku:nodejs-sample-app
    8f923f2..e344afb  master -> master
    
 ``
