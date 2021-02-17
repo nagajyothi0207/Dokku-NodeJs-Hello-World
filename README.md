@@ -6,16 +6,27 @@
 ```
 apt-get update -y
 ```
-### Bootstrap the node first
-### for debian systems, installs dokku via apt-get
+### Bootstrap the node first - Run the following commands
+#### for debian systems, installs dokku via apt-get
+
 ```
   wget https://raw.githubusercontent.com/dokku/dokku/v0.23.5/bootstrap.sh
 
   sudo DOKKU_TAG=v0.23.5 bash bootstrap.sh
 ```
- ### go to your server's IP and follow the web installer
+### Now login to the ser and create a dokku app
+```
+dokku apps:create nodejs-sample-app
 
-### then enable the SSH key-based authentication
+```
+
+#### Once app is created verify the app created status by running the below command
+```
+ dokku apps:list
+ ```
+ 
+## Next enable the SSH key-based authentication from the development machine to make connectivity via hostname(Eg: dokku) and username and private key
+
 vim ~/.ssh/config
 ```
 Host dokku
@@ -24,21 +35,16 @@ Host dokku
     Port 22
     IdentityFile /dxx/xx/xxx-Key.pem
 ```
-### login to the server and create a dokku app
-```
-dokku apps:create nodejs-sample-app
-
-```
-
-### Then you can deploy code from the dev system by initiating the git push
+### Run the below command from the source code directory. This will add the remote repository  
 ```
  git remote add dokku dokku@dokku:nodejs-sample-app
 
 ```
- #### after the git remote add (dokku - is the git remote name)
- #### dokku is the linux user for application life cycle maintenence
- #### @dokku - is the server name - where you've configured in ssh/config
- #### nodejs-sample-ap - is your dokku application name 
+Notes: 
+ #### after the git remote add (First `dokku` - is the git remote name)
+ #### Second `dokku` is the linux user for application life cycle maintenence
+ #### `@dokku` - is the server name - where you've configured in ssh/config
+ #### `nodejs-sample-app` - is your dokku application name which created in the above step
  
 ### Deploy the app
  ```
